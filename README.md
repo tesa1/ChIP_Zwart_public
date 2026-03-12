@@ -6,8 +6,6 @@
 ![visits](https://badges.pufler.dev/visits/sebastian-gregoricchio/ChIP_Zwart) --->
 
 # ChIP-seq for Zwartlab
-[<img src="https://raw.githubusercontent.com/sebastian-gregoricchio/sebastian-gregoricchio.github.io/main/generic_resources/documentation.svg" align="right" height = 150/>](https://github.com/sebastian-gregoricchio/ChIP_Zwart/wiki)
-<hr style="border:2px">
 
 1. [Introduction](#intro)
 2. [Installation and dependencies](#dependencies)
@@ -396,6 +394,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 
 ### 5.4. Contributors <a name="contributors"></a>
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
 
 
 
