@@ -1,4 +1,4 @@
-#####################################
+]})#####################################
 ##    Snakefile for DNA mapping    ##
 #####################################
 
@@ -20,7 +20,7 @@ from itertools import combinations
 ### Define the genomes (ZWART source)
 genomes_table = pd.DataFrame({'genome_id': ['hg38', 'hg19'],
                               'fasta': ['/shared/data/Zwartlab/snakepipes_indices/hg38/BWAIndex/genome.fa',
-                                        '/shared/data/Zwartlab/snakepipes_indices/hg19/BWAIndex/genome.fa'
+                                        '/shared/data/Zwartlab/snakepipes_indices/hg19/BWAIndex/genome.fa']})
                             
 # Define general variables
 genome_used = (str(config["genome"])).lower()
@@ -477,4 +477,5 @@ rule multiQC_trimmed_fastq:
 # ------------------------------------------------------------------------------
 #                                 END pipeline
 # ------------------------------------------------------------------------------
+
 
