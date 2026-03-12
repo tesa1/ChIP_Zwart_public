@@ -76,7 +76,7 @@ Additional information must be provided to the pipeline in the command line:
 * the source fastq directory
 * the output directory where you want your results to be stored (if not already available, the pipeline will make it for you)
 * whether your data are paired- or single-end
-* You must provide your own path to genomes eg: `hg38`, `hg19`, `rn6`. Change path and `.fa` file information on line 21 in `DNA_mapping.snakefile` to your locations.
+* You must provide your own path to genomes eg: `hg38`, `hg19`, `rn6`. Change path and `.fa` file information on line 21 in `DNA_mapping.snakefile` to your locations. The pipeline uses BWA, so you must index your genome file(s) in this location with `bwa index reference.fa`.
 
 All the other parameters are already available in the `configfile_DNAmapping.yaml` file or hard-coded in the snakemake file.
 
@@ -392,6 +392,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 ### 5.4. Contributors <a name="contributors"></a>
 ![contributors](https://contrib.rocks/image?repo=tesa1/chip_zwart_public)
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
 
 
 
