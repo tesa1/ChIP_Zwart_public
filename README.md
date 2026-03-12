@@ -55,7 +55,7 @@ Ensure you have a proper conda path (eg. /opt/miniconda3/bin/conda) by running: 
 The pipeline expects 2 sets of pre-installed files
 * path to BWA indexed genome reference files should be changed to your info in `DNA_mapping.snakefile`.
 * path to BWA indexed files and blacklist bed files should be changed in `peakCalling.snakefile`.
-* effective genome size and any chromosomes to ignore for normalization (patch chromosomes) should be changed to reflect your own genomes. This information is used in the RPGC normaliztion of bigwigs and hg38 blacklist is used for automatically filtering hg38 peakcalling output files. For hg19, we blacklist isn't automatically filtered to be backwards compatible with older Zwart lab data.
+* effective genome size and any chromosomes to ignore for normalization (patch chromosomes) should be changed to reflect your own genomes in `peakCalling.snakefile`. This information is used in the RPGC normaliztion of bigwigs and hg38 blacklist is used to automatically filtering hg38 peakcalling output files with bedtools. For hg19, the blacklist is used for normalization, but peaks are not automatically filtered (to remain backwards compatible with older Zwart lab datasets). 
 
 ### 2.3 Environment installation <a name="envinstall"></a>
 To avoid packages version incompatibility a yam file with fixed packages versions is provided in this repository.
@@ -400,6 +400,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 ### 5.4. Contributors <a name="contributors"></a>
 ![contributors](https://contrib.rocks/image?repo=tesa1/chip_zwart_public)
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
 
 
 
