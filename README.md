@@ -218,7 +218,7 @@ Additional information must be provided to the pipeline in the command line:
 * the output directory where you want your results to be stored (if not already available, the pipeline will make it for you)
 * whether your data contain UMIs
 * whether your data are paired- or single-end
-* the genome to use (available options: `hg38`, `hg19`, `hg38_ucsc`, `hg19_ucsc`, `mm10`, `mm9`, `rn6`)
+* the user defined genome to use (example `hg38`, `hg19`)
 * the path to the sample configuration table
 
 All the other parameters are already available in the `configfile_peakcalling.yaml` file or hard-coded in the snakemake file.
@@ -400,6 +400,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 ### 5.4. Contributors <a name="contributors"></a>
 Sebastian Gregoricchio ![contributors](https://github.com/sebastian-gregoricchio)
 Tesa Severson ![contributors](https://github.com/tesa1/ChIP_Zwart_public)
+
 
 
 
