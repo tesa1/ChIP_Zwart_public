@@ -398,8 +398,9 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 <br/>
 
 ### 5.4. Contributors <a name="contributors"></a>
-Sebastian Gregoricchio ![contributors](https://github.com/sebastian-gregoricchio)
-Tesa Severson ![contributors](https://github.com/tesa1/ChIP_Zwart_public)
+Sebastian Gregoricchio ![contributor_Seb](https://github.com/sebastian-gregoricchio)
+Tesa Severson ![contributor_Tesa](https://github.com/tesa1/ChIP_Zwart_public)
+
 
 
 
