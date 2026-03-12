@@ -78,7 +78,7 @@ Hereafter, the running commands for DNA-mapping and ChIP-seq peak calling will b
 
 
 ### 3.1 DNA-mapping <a name="dnamapping"></a>
-This short pipeline performs the mapping (alignment) to a reference genome upon trimming of the adapter sequences from the raw fastq reads by [cutadapt](https://cutadapt.readthedocs.io/en/stable/). Adapter sequences are from Illumina and are hard-coded in the `configfile_DNAmapping.yaml` file. Change them if your setup is different. Further, a filter on the mapping quality (MAPQ) is applied and duplicated reads are marked. Zwart lab filter is MQ20. Changing this filter is not advised, but possible in the `configfile_DNAmapping.yaml` file if necessary. Notice that in the case of paired-end reads, when present, UMIs (Unique Molecule Identifiers) sequence is added to the index sequences in the read name. This is allows the marking of the duplicated reads in a UMI-aware manner (reads/fragments that have exactly the same sequence but different UMI-sequence are not marked as duplicates). If your UMI set up is different, you can run with `umi_present="False"` in `peakCalling.snakefile` and MarkDuplicates will be run.
+This short pipeline performs the mapping (alignment) to a reference genome upon trimming of the adapter sequences from the raw fastq reads by [cutadapt](https://cutadapt.readthedocs.io/en/stable/). Adapter sequences are from Illumina and are hard-coded in the `configfile_DNAmapping.yaml` file. Change them if your setup is different. Further, a filter on the mapping quality (MAPQ) is applied and duplicated reads are marked. Zwart lab filter is MQ20. Changing this filter is not advised, but possible in the `configfile_DNAmapping.yaml` file if necessary. Notice that in the case of paired-end reads, when present, UMIs (Unique Molecule Identifiers) sequence is added to the index sequences in the read name. This is allows the marking of the duplicated reads in a UMI-aware manner (reads/fragments that have exactly the same sequence but different UMI-sequence are not marked as duplicates). If your UMI set up is different, you can run with `umi_present="False"` in `peakCalling.snakefile` and MarkDuplicates will be run in a non-UMI aware manner.
 
 Additional information must be provided to the pipeline in the command line:
 * the source fastq directory
@@ -400,6 +400,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 ### 5.4. Contributors <a name="contributors"></a>
 ![contributors](https://contrib.rocks/image?repo=tesa1/chip_zwart_public)
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
 
 
 
