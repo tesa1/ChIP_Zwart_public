@@ -201,7 +201,7 @@ Hereafter there are some details of additional parameters available in the `conf
 <br/><br/>
 
 ### 3.3. ChIP-seq peak calling <a name="peakcalling"></a>
-This peak calling pipeline expects that every sample has an input. This pipeline will not work if you do not have input files for your samples. To facilitate the analyses of the ChIP-seq analyses in the Zwart lab, it is strongly recommended to name your files as simply as possible, see example `peakCalling_sampleConfig_example.txt`  <br> 
+This peak calling pipeline expects that every sample has an input. This pipeline will not work if you do not have input files for your samples. To facilitate the analyses of the ChIP-seq analyses, it is strongly recommended to name your files as simply as possible, see example `peakCalling_sampleConfig_example.txt`  <br> 
 
 The pipeline requires a sample configuration file which provides information about ChIP-Input pairs and the type of peak calling to perform (broad or narrow). <br>
 This configuration file must be in a tab-delimited txt file format (with column names) containing the following information (respect the column order):
@@ -215,7 +215,7 @@ This configuration file must be in a tab-delimited txt file format (with column 
 A dummy-table could be found in [`resources/peakCalling_sampleConfig_example.txt`](https://github.com/tesa1/ChIP_Zwart_public/blob/main/resources/peakCalling_sampleConfig_example.txt).
 
 Additional information must be provided to the pipeline in the command line:
-* the source bam directory (e.g. *rename* folder)
+* the source bam directory
 * the output directory where you want your results to be stored (if not already available, the pipeline will make it for you)
 * whether your data contain UMIs
 * whether your data are paired- or single-end
@@ -289,8 +289,8 @@ The results structure is the following:
 * *01_BAM_filtered* -> bams filtered for mapping quality (MAPQ) and with the duplicates marked/removed
 * *02_fastQC_on_BAM_filtered* -> individual fastQC for each filtered bam
 * *03_bigWig_bamCoverage* -> bigWig of the bam coverage normalized ([RPGC](https://deeptools.readthedocs.io/en/develop/content/help_glossary.html?highlight=RPGC#abbreviations) = Reads Per Genomic Content) or not (raw_coverage) depending on the sequencing depth
-* *04_Called_peaks* -> peaks called with macs2 (de-blacklisted in hg38 but not hg19 - for backwards compatibility of older hg19 Zwart lab data -). If single-end, it can be found also a folder with the output of [`phantompeakqualtools`](https://www.encodeproject.org/software/phantompeakqualtools/) as the calculated fragment length is used for running macs2 with single-end data. If the bed file does not contain already the 'chr' for the "canonical" chromosomes, it will be added in a separated file ending by `_chr.narrow/broadPeak`
-* *05_Quality_controls_and_statistics* -> this folder contains sample correlations heatmaps and PCAs, a multiQC report containing multiple info (number of reads, duplicates, peak counts and fragmenth lenght, phantom results), statistics on the called peaks (FRiP, number, etc.)
+* *04_Called_peaks* -> peaks called with macs2 (de-blacklisted in hg38 but not hg19 - for backwards compatibility of older hg19 Zwart lab data -). If single-end, there will be a folder with the output of [`phantompeakqualtools`](https://www.encodeproject.org/software/phantompeakqualtools/) as the calculated fragment length is used for running macs2 with single-end data. If the bed file does not contain already the 'chr' for the "canonical" chromosomes, it will be added in a separated file ending by `_chr.narrow/broadPeak`
+* *05_Quality_controls_and_statistics* -> this folder contains sample correlations heatmaps and PCAs, a multiQC report containing multiple info (number of reads, duplicates, peak counts and fragmenth length, phantom results), statistics on the called peaks (FRiP, number, etc.)
 
 
 Here an example directory tree:
@@ -380,6 +380,8 @@ You may have conda envs installed already on your system which do not work well 
 
 Now load again the ChIP pipeline environment by typing `conda activate chip_zwart_public`. <br> Check then that the pipeline is using the correct python version by typing `which python`. <br> The command should return something like `/home/your.name/.conda/envs/chip_zwart_public/bin/python` instead of `/usr/bin/python`.
 
+Another frequent problem is dos/mac line endings and hidden characters on the `peakCalling_sampleConfig_example.txt` file. You can fix this with dos2unix by running `dos2unix peakCalling_sampleConfig_example.txt`
+
 
 <br/><br/>
 
@@ -401,6 +403,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 ### 5.4. Contributors <a name="contributors"></a>
 Sebastian Gregoricchio ![contributor_Seb](https://github.com/sebastian-gregoricchio)
 Tesa Severson ![contributor_Tesa](https://github.com/tesa1/ChIP_Zwart_public)
+
 
 
 
