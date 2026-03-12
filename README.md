@@ -8,6 +8,7 @@
 2. [Installation and dependencies](#dependencies)
     1. [Conda info](#condainfo)
     2. [User input files](#user_input)
+    3. [Environment installation](#envinstall)
 3. [How to run the pipeline](#running)
     1. [DNA-mapping](#dnamapping)
         1. [DNA-mapping workflow](#dnaworkflow)
@@ -50,7 +51,10 @@ Conda must be installed on your system for the pipeline to work.
 Ensure you have a proper conda path (eg. /opt/miniconda3/bin/conda) by running: `which conda`
 
 ### 2.2 User Input Files <a name="user_input"></a>
-The pipeline expects pre-installed BWA indexed genome reference files
+The pipeline expects 2 sets of pre-installed files
+* path to BWA indexed genome reference files should be changed to your info in `DNA_mapping.snakefile`.
+* path to BWA indexed files and blacklist bed files should be changed in `peakCalling.snakefile`.
+* effective genome size and any chromosomes to ignore for normalization (patch chromosomes) should be changed to reflect your own genomes.
 
 ### 2.3 Environment installation <a name="envinstall"></a>
 To avoid packages version incompatibility a yam file with fixed packages versions is provided in this repository.
@@ -395,6 +399,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 ### 5.4. Contributors <a name="contributors"></a>
 ![contributors](https://contrib.rocks/image?repo=tesa1/chip_zwart_public)
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
 
 
 
