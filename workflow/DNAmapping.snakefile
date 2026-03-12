@@ -18,9 +18,15 @@ from itertools import combinations
 
 
 ### Define the genomes (ZWART source)
-genomes_table = pd.DataFrame({'genome_id': ['hg38', 'hg19'],
-                              'fasta': ['/shared/data/Zwartlab/snakepipes_indices/hg38/BWAIndex/genome.fa',
-                                        '/shared/data/Zwartlab/snakepipes_indices/hg19/BWAIndex/genome.fa']})
+genomes_table = pd.DataFrame({'genome_id': ['hg38', 'hg19', 'hg38_ucsc', 'hg19_ucsc', 'mm10', 'mm9', 'rn6'],
+                              'fasta': ['/shared/data/Zwartlab/t.severson/ref_hg38/BWAIndex/genome.fa',
+                                        '/shared/data/Zwartlab/t.severson/ref_hg19/BWAIndex/genome.fa',
+                                        '/home/s.gregoricchio/annotations/genomes/Hg38_UCSC/one_file_fasta/Hg38_UCSC.fa',
+                                        '/home/s.gregoricchio/annotations/genomes/Hg19_UCSC/one_file_fasta/hg19.fa',
+                                        '/home/s.gregoricchio/annotations/genomes/Mm10/one_file_fasta/Mus_musculus_GRCm38_Mm10_GCA_000001635.2_UCSC.fa',
+                                        'mm9_ucsc',
+                                        '/shared/data/Zwartlab/snakepipes_indices/Rnor_6.0/BWAIndex/Rattus_norvegicus.Rnor_6.0.dna.toplevel.fa']})
+
                             
 # Define general variables
 genome_used = (str(config["genome"])).lower()
@@ -477,5 +483,6 @@ rule multiQC_trimmed_fastq:
 # ------------------------------------------------------------------------------
 #                                 END pipeline
 # ------------------------------------------------------------------------------
+
 
 
