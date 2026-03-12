@@ -38,6 +38,8 @@
 ## 1. Introduction <a name="intro"></a>
 This repository provides a snakemake-based pipeline for the analyses of ChIP-seq data. The methods, programs and versions used are Zwart Lab approved for ChIP-seq analysis. The repository allows the mapping of fastq files (both paired- and single-end) as well as other downstream analyses starting from the bam files (i.e., mapping, filtering, sample correlation, peak calling).
 
+You will need to have conda installed and initiated on your system.
+
 In this repository you can find:
 * _**config**_ directory: contains the configuration .yaml files for the different pipelines. These files contains al the pre-set parameters that in most of the cases do not require any change.
 * _**resources**_ directory: here are collected example files (e.g. `peakCalling_sampleConfig_example.txt`), the workflow diagrams and the wz-number renaming script from Joe.
@@ -424,3 +426,4 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 
 ### 5.4. Contributors <a name="contributors"></a>
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
