@@ -87,7 +87,7 @@ Additional information must be provided to the pipeline in the command line:
 * whether your data are paired- or single-end
 * You must provide your own path to genomes eg: `hg38`, `hg19`, `rn6`. Change path and `.fa` file information in `DNA_mapping.snakefile` to your locations. The pipeline uses BWA, so you must index your genome file(s) in this location with `bwa index reference.fa`.
 
-All the other parameters are already available in the `configfile_DNAmapping.yaml` file or hard-coded in the snakemake file. Inspect the hard-coded parameters to make sure they work for your data. **_NOTE_**:The default of DNA_mapping is to mark duplicates but not remove them. 
+All the other parameters are already available in the `configfile_DNAmapping.yaml` file or hard-coded in the snakemake file. Inspect the hard-coded parameters to make sure they work for your data. **_NOTE_**:The default of DNA_mapping is to mark duplicates but not remove them. If you wish to remove them, use the `remove_duplicates="True"` in the DNA_mapping command file (if true the tag in the bams will be *_dedup* instead of *_mdup*). 
 
 
 To partially avoid unexpected errors during the execution of the pipeline, a so called 'dry-run' is strongly recommended. Indeed, adding a `-n` flag at the end of the snakemake running command will allow snakemake to check that all links and file/parameters dependencies are satisfied before to run the "real" processes. This command will therefore help the debugging process. When you want to run without, remove the `-n` flag. A 'dry-run' only checks whether all resources are available. Failures can still occurr.
@@ -403,6 +403,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 ### 5.4. Contributors <a name="contributors"></a>
 Sebastian Gregoricchio ![contributor_Seb](https://github.com/sebastian-gregoricchio)
 Tesa Severson ![contributor_Tesa](https://github.com/tesa1/ChIP_Zwart_public)
+
 
 
 
