@@ -1,5 +1,4 @@
 [![Snakemake](https://img.shields.io/badge/snakemake-≥7.24.0-brightgreen.svg)](https://snakemake.github.io)
-![release](https://img.shields.io/github/v/release/tesa1/ChIP_Zwart_public)
 [![license](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/tesa1/ChIP_Zwart_public/LICENSE.md/LICENSE.md)
 
 
@@ -392,6 +391,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 
 ### 5.4. Contributors <a name="contributors"></a>
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
 
 
 
