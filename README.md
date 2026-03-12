@@ -129,7 +129,7 @@ If no errors occur, the pipeline can be run with the same command but without th
 #### 3.1.1. DNA-mapping workflow <a name="dnaworkflow"></a>
 Here after you can see the full potential workflow of the single-end and paired-end DNA-mapping pipeline:
 
-![DNA mapping workflow](https://github.com/tesa1/ChIP_Zwart_public/main/resources/DNAmapping_workflow_SE.PE.png)
+![DNA mapping workflow](https://github.com/tesa1/ChIP_Zwart_public/blob/a2570f842ee4f679a86e8284d3d2a1159619cbaf/resources/DNAmapping_workflow_SE.PE.png)
 
 
 <br/><br/>
@@ -400,6 +400,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 ### 5.4. Contributors <a name="contributors"></a>
 ![contributors](https://contrib.rocks/image?repo=tesa1/chip_zwart_public)
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
 
 
 
