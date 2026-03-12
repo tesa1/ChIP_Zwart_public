@@ -64,7 +64,7 @@ For the installation, follow the following steps:
 * install the conda environment from the yaml environment file contained in the repository:<br>
 `conda env create -f </target/folder>/ChIP_Zwart_public/workflow/envs/chip_zwart_condaEnv_stable.yaml`
 * activate the environment: `conda activate chip_zwart` (if the env is not activated the pipeline won't work!): <br>
-`(chip_zwart) your.name@harris:~$`
+`(chip_zwart) your.name@yourserver:~$`
 
 <br/><br/>
 
@@ -421,6 +421,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 
 ### 5.4. Contributors <a name="contributors"></a>
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
 
 
 
