@@ -32,7 +32,7 @@
 
 
 ## 1. Introduction <a name="intro"></a>
-This repository provides a snakemake-based pipeline for the analyses of ChIP-seq data. The methods, programs and versions used are Zwart Lab approved for ChIP-seq analysis. The repository allows the mapping of fastq files (both paired- and single-end) as well as other downstream analyses starting from the bam files (i.e., mapping, filtering, sample correlation, peak calling).
+This repository provides a snakemake-based pipeline for the analyses of ChIP-seq data. The methods, programs and versions used are used by the Wilbert Zwart Lab for ChIP-seq analysis. The repository allows the mapping of fastq files (both paired- and single-end) as well as other downstream analyses starting from the bam files (i.e., mapping, filtering, QC info, sample correlation, peak calling).
 
 You will need to have conda installed and initiated on your system.
 
@@ -54,7 +54,7 @@ Ensure you have a proper conda path (eg. /opt/miniconda3/bin/conda) by running: 
 ### 2.2 User Input Files <a name="user_input"></a>
 The pipeline expects 2 sets of pre-installed files
 * path to BWA indexed genome reference files should be changed to your info in `DNA_mapping.snakefile`.
-* path to BWA indexed files and blacklist bed files should be changed in `peakCalling.snakefile`.
+* path to BWA indexed files and blacklist *.bed files should be changed in `peakCalling.snakefile`. Blacklist files can be downloaded from [ENCODE](https://www.encodeproject.org/annotations/ENCSR636HFF/)
 * effective genome size and any chromosomes to ignore for normalization (patch chromosomes) should be changed to reflect your own genomes in `peakCalling.snakefile`. This information is used in the RPGC normaliztion of bigwigs and hg38 blacklist is used to automatically filtering hg38 peakcalling output files with bedtools. For hg19, the blacklist is used for normalization, but peaks are not automatically filtered (to remain backwards compatible with older Zwart lab datasets). 
 
 ### 2.3 Environment installation <a name="envinstall"></a>
@@ -400,6 +400,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 ### 5.4. Contributors <a name="contributors"></a>
 ![contributors](https://contrib.rocks/image?repo=tesa1/chip_zwart_public)
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
 
 
 
