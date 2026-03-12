@@ -40,8 +40,8 @@ This repository provides a snakemake-based pipeline for the analyses of ChIP-seq
 You will need to have conda installed and initiated on your system.
 
 In this repository you can find:
-* _**config**_ directory: contains the configuration .yaml files for the different pipelines. These files contains al the pre-set parameters that in most of the cases do not require any change.
-* _**resources**_ directory: here are collected example files (e.g. `peakCalling_sampleConfig_example.txt`), the workflow diagrams and the wz-number renaming script from Joe.
+* _**config**_ directory: contains the configuration .yaml files for the different pipelines. These files contains all the pre-set parameters that in most of the cases do not require any change.
+* _**resources**_ directory: here are collected example files (e.g. `peakCalling_sampleConfig_example.txt`), the workflow diagrams.
 * _**workflow**_ directory: includes all the .snakefile files of the different pipelines.
 
 <br/><br/>
@@ -60,9 +60,9 @@ To avoid packages version incompatibility a yam file with fixed packages version
 
 For the installation, follow the following steps:
 * Place yourself in the directory where the repository should be downloaded with `cd </target/folder>`
-* download the GitHub repository with `git clone https://github.com/sebastian-gregoricchio/ChIP_Zwart`, or click on *Code > Download ZIP* on the [GitHub page](https://github.com/sebastian-gregoricchio/ChIP_Zwart)
+* download the GitHub repository with `git clone https://github.com/tesa1/ChIP_Zwart_public`, or click on *Code > Download ZIP* on the [GitHub page](https://github.com/tesa1/ChIP_Zwart_public)
 * install the conda environment from the yaml environment file contained in the repository:<br>
-`conda env create -f </target/folder>/ChIP_Zwart/workflow/envs/chip_zwart_condaEnv_stable.yaml`
+`conda env create -f </target/folder>/ChIP_Zwart_public/workflow/envs/chip_zwart_condaEnv_stable.yaml`
 * activate the environment: `conda activate chip_zwart` (if the env is not activated the pipeline won't work!): <br>
 `(chip_zwart) your.name@harris:~$`
 
@@ -82,7 +82,7 @@ Additional information must be provided to the pipeline in the command line:
 * the source fastq directory
 * the output directory where you want your results to be stored (if not already available, the pipeline will make it for you)
 * whether your data are paired- or single-end
-* the genome to use (available options: a) GCF-genomes: `hg38`, `hg19`, `rn6`; b) UCSC-genomes: `hg38_ucsc`, `hg19_ucsc`, `mm10`, `mm9`)
+* You must provide your own path to genomes eg: a)  `hg38`, `hg19`, `rn6`; b) UCSC-genomes: `hg38_ucsc`, `hg19_ucsc`, `mm10`, `mm9`)
 
 All the other parameters are already available in the `configfile_DNAmapping.yaml` file or hard-coded in the snakemake file.
 
@@ -421,5 +421,6 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 
 ### 5.4. Contributors <a name="contributors"></a>
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
 
 
