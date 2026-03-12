@@ -32,7 +32,7 @@
 
 
 ## 1. Introduction <a name="intro"></a>
-This repository provides a snakemake-based pipeline for the analyses of ChIP-seq data. The methods, programs and versions used are used by the Wilbert Zwart Lab for ChIP-seq analysis. The repository allows the mapping of fastq files (both paired- and single-end) as well as other downstream analyses starting from the bam files (i.e., mapping, filtering, QC info, sample correlation, peak calling). Written by Sebastian Gregoricchio and Tesa Severson, Zwart lab 2026.
+This repository provides a snakemake-based pipeline for the analyses of ChIP-seq data. The methods, programs and versions used are used by the Wilbert Zwart Lab for ChIP-seq analysis. The repository allows the mapping of fastq files (both paired- and single-end) as well as other downstream analyses starting from the bam files (i.e., mapping, filtering, QC info, sample correlation, peak calling). Written by Sebastian Gregoricchio and Tesa Severson, Zwart lab March 2026.
 
 You will need to have conda installed and initiated on your system.
 
@@ -400,6 +400,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 ### 5.4. Contributors <a name="contributors"></a>
 Sebastian Gregoricchio ![contributor_Seb](https://github.com/sebastian-gregoricchio)
 Tesa Severson ![contributor_Tesa](https://github.com/tesa1/ChIP_Zwart_public)
+
 
 
 
