@@ -2,11 +2,12 @@
 [![license](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/tesa1/ChIP_Zwart_public/LICENSE.md/LICENSE.md)
 
 
-# ChIP-seq for Zwartlab
+# ChIP-seq Analysis used in the Wilbert Zwart Lab--alignment, peakcalling and QC
 
 1. [Introduction](#intro)
 2. [Installation and dependencies](#dependencies)
     1. [Conda info](#condainfo)
+    2. [User input files](#user_input)
 3. [How to run the pipeline](#running)
     1. [DNA-mapping](#dnamapping)
         1. [DNA-mapping workflow](#dnaworkflow)
@@ -48,8 +49,10 @@ Conda must be installed on your system for the pipeline to work.
 
 Ensure you have a proper conda path (eg. /opt/miniconda3/bin/conda) by running: `which conda`
 
+### 2.2 User Input Files <a name="user_input"></a>
+The pipeline expects pre-installed BWA indexed genome reference files
 
-### 2.2 Environment installation <a name="envinstall"></a>
+### 2.3 Environment installation <a name="envinstall"></a>
 To avoid packages version incompatibility a yam file with fixed packages versions is provided in this repository.
 
 For the installation, follow the following steps:
@@ -392,6 +395,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 ### 5.4. Contributors <a name="contributors"></a>
 ![contributors](https://contrib.rocks/image?repo=tesa1/chip_zwart_public)
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
 
 
 
