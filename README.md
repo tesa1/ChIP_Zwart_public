@@ -11,8 +11,7 @@
 
 1. [Introduction](#intro)
 2. [Installation and dependencies](#dependencies)
-    1. [Conda initialization](#condainit)
-    2. [Environment installation](#envinstall)
+    1. [Conda info](#condainfo)
 3. [How to run the pipeline](#running)
     1. [DNA-mapping](#dnamapping)
         1. [DNA-mapping workflow](#dnaworkflow)
@@ -50,14 +49,10 @@ In this repository you can find:
 ## 2. Installation and dependencies <a name="dependencies"></a>
 To install the pipeline it is required to download this repository and use conda for installation.
 
-### 2.1 Conda initialization <a name="condainit"></a>
-If never done before proceed to the following steps:
-* initialize conda in your environment by: `/opt/miniconda3/bin/conda init`
-* actualize the terminal with: `source ~/.bashrc`
+### 2.1 Conda info <a name="condainfo"></a>
+Conda must be installed on your system for the pipeline to work. 
 
-On your terminal, it should appear `(base) your.name@harris:~$`. If this is not the case, run `conda activate base`.
-
-Ensure you have the proper conda path (/opt/miniconda3/bin/conda) by running: `which conda`
+Ensure you have a proper conda path (eg. /opt/miniconda3/bin/conda) by running: `which conda`
 
 
 ### 2.2 Environment installation <a name="envinstall"></a>
@@ -426,4 +421,5 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 
 ### 5.4. Contributors <a name="contributors"></a>
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
 
