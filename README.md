@@ -200,7 +200,7 @@ Hereafter there are some details of additional parameters available in the `conf
 <br/><br/>
 
 ### 3.3. ChIP-seq peak calling <a name="peakcalling"></a>
-This peak calling pipeline expects that every sample has a input. If you need to call peaks without input, you can't use this pipeline. To facilitate the analyses of the ChIP-seq analyses in the Zwart lab, it is strongly recommended to renames your files as simply as possible, see example `peakCalling_sampleConfig_example.txt`  <br> 
+This peak calling pipeline expects that every sample has an input. This pipeline will not work if you do not have input files for your samples. To facilitate the analyses of the ChIP-seq analyses in the Zwart lab, it is strongly recommended to name your files as simply as possible, see example `peakCalling_sampleConfig_example.txt`  <br> 
 
 The pipeline requires a sample configuration file which provides information about ChIP-Input pairs and the type of peak calling to perform (broad or narrow). <br>
 This configuration file must be in a tab-delimited txt file format (with column names) containing the following information (respect the column order):
@@ -400,6 +400,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 ### 5.4. Contributors <a name="contributors"></a>
 Sebastian Gregoricchio ![contributors](https://github.com/sebastian-gregoricchio)
 Tesa Severson ![contributors](https://github.com/tesa1/ChIP_Zwart_public)
+
 
 
 
