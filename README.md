@@ -3,7 +3,7 @@
 
 
 # ChIP-seq Analysis used in the Wilbert Zwart Lab
-# Alignment, Peakcalling and QC
+# Alignment, Peakcalling, Bigwigs and QC Plots and Metrics
 
 1. [Introduction](#intro)
 2. [Installation and dependencies](#dependencies)
@@ -399,6 +399,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 
 ### 5.4. Contributors <a name="contributors"></a>
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
 
 
 
