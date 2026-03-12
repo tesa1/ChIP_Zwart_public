@@ -53,7 +53,7 @@ Ensure you have a proper conda path (eg. /opt/miniconda3/bin/conda) by running: 
 
 ### 2.2 User Input Files <a name="user_input"></a>
 The pipeline expects 2 sets of pre-installed files
-* path to BWA indexed genome reference files should be changed to your info in `DNA_mapping.snakefile`.
+* path to BWA indexed genome reference files should be changed to your info in `DNA_mapping.snakefile`. Fasta genome reference files can be indexed with `bwa index reference.fa`.
 * path to BWA indexed files and blacklist *.bed files should be changed in `peakCalling.snakefile`. Blacklist files can be downloaded from [ENCODE](https://www.encodeproject.org/annotations/ENCSR636HFF/)
 * effective genome size and any chromosomes to ignore for normalization (patch chromosomes) should be changed to reflect your own genomes in `peakCalling.snakefile`. This information is used in the RPGC normaliztion of bigwigs and hg38 blacklist is used to automatically filtering hg38 peakcalling output files with bedtools. For hg19, the blacklist is used for normalization, but peaks are not automatically filtered (to remain backwards compatible with older Zwart lab datasets). 
 
@@ -84,9 +84,9 @@ Additional information must be provided to the pipeline in the command line:
 * the source fastq directory
 * the output directory where you want your results to be stored (if not already available, the pipeline will make it for you)
 * whether your data are paired- or single-end
-* You must provide your own path to genomes eg: `hg38`, `hg19`, `rn6`. Change path and `.fa` file information on line 21 in `DNA_mapping.snakefile` to your locations. The pipeline uses BWA, so you must index your genome file(s) in this location with `bwa index reference.fa`.
+* You must provide your own path to genomes eg: `hg38`, `hg19`, `rn6`. Change path and `.fa` file information in `DNA_mapping.snakefile` to your locations. The pipeline uses BWA, so you must index your genome file(s) in this location with `bwa index reference.fa`.
 
-All the other parameters are already available in the `configfile_DNAmapping.yaml` file or hard-coded in the snakemake file.
+All the other parameters are already available in the `configfile_DNAmapping.yaml` file or hard-coded in the snakemake file. Inspect the hard-coded parameters to make sure they work for your data.
 
 
 To partially avoid unexpected errors during the execution of the pipeline, a so called 'dry-run' is strongly recommended. Indeed, adding a `-n` flag at the end of the snakemake running command will allow snakemake to check that all links and file/parameters dependencies are satisfied before to run the "real" processes. This command will therefore help the debugging process. When you want to run without, remove the `-n` flag. A 'dry-run' only checks whether all resources are available. Failures can still occurr.
@@ -400,6 +400,7 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 ### 5.4. Contributors <a name="contributors"></a>
 ![contributors](https://contrib.rocks/image?repo=tesa1/chip_zwart_public)
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
 
 
 
