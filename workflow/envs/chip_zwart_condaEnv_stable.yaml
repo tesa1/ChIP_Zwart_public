@@ -1,4 +1,4 @@
-name: chip_zwart
+name: chip_zwart_public
 channels:
   - maximinio
   - bioconda
@@ -345,3 +345,4 @@ dependencies:
   - zstd=1.5.2=ha4553b6_0
   - pip:
       - simplejson==3.18.3
+
