@@ -273,12 +273,12 @@ Note that the absence of errors does not mean that the pipeline will run without
 Here after you can see the full potential workflow of the paired-end and single-end ChIP-seq pipeline:
 
 **a) SINGLE-END**
-![PE workflow](https://raw.githubusercontent.com/tesa1/ChIP_Zwart_public/main/resources/peakcalling_workflow_SE.png)
+![SE workflow](https://github.com/tesa1/ChIP_Zwart_public/blob/14a30ca4fb2ddbcd7620fd275d457cf1f2acd0f5/resources/peakcalling_workflow_SE.png)
 
 <br/><br/>
 
 **b) PAIRED-END**
-![PE workflow](https://raw.githubusercontent.com/tesa1/ChIP_Zwart_public/main/resources/peakcalling_workflow_PE.png)
+![PE workflow](https://github.com/tesa1/ChIP_Zwart_public/blob/14a30ca4fb2ddbcd7620fd275d457cf1f2acd0f5/resources/peakcalling_workflow_PE.png)
 
 <br/><br/>
 
@@ -398,8 +398,8 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 <br/>
 
 ### 5.4. Contributors <a name="contributors"></a>
-![contributors](https://contrib.rocks/image?repo=tesa1/chip_zwart_public)
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
 
 
 
