@@ -17,8 +17,7 @@
         1. [DNA-mapping workflow](#dnaworkflow)
         2. [DNA-mapping results](#dnaresults)
         3. [DNA-mapping config file](#dnaconfig)
-    2. [CRAM-TO-BAM](#cramtobam)
-    3. [ChIP-seq peak calling](#peakcalling)
+    2. [ChIP-seq peak calling](#peakcalling)
         1. [Peak calling workflow](#peakcallingworkflow)
         2. [Peak calling results](#peakcallingresults)
         3. [Peak calling config file](#peakcallingconfig)
@@ -76,7 +75,7 @@ Hereafter, the running commands for DNA-mapping and ChIP-seq peak calling will b
 
 
 ### 3.1 DNA-mapping <a name="dnamapping"></a>
-This short pipeline performs the mapping (alignment) to a reference genome upon trimming of the adapter sequences from the raw fastq reads by [cutadapt](https://cutadapt.readthedocs.io/en/stable/) in the same way the GCF does for alignments. Further, a filter on the mapping quality (MAPQ) is applied and duplicated reads are marked. Zwart lab filter is MQ20. Changing this filter is not advised, but possible in the `configfile_DNAmapping.yaml` file if necessary. Notice that in the case of paired-end reads, when present, UMIs (Unique Molecule Identifiers) sequence is added to the index sequences in the read name. This is allows the marking of the duplicated reads in a UMI-aware manner (reads/fragments that have exactly the same sequence but different UMI-sequence are not marked as duplicates).
+This short pipeline performs the mapping (alignment) to a reference genome upon trimming of the adapter sequences from the raw fastq reads by [cutadapt](https://cutadapt.readthedocs.io/en/stable/). Adapter sequences are from Illumin and are hard-coded in the `configfile_DNAmapping.yaml` file. Change them if your setup is different. Further, a filter on the mapping quality (MAPQ) is applied and duplicated reads are marked. Zwart lab filter is MQ20. Changing this filter is not advised, but possible in the `configfile_DNAmapping.yaml` file if necessary. Notice that in the case of paired-end reads, when present, UMIs (Unique Molecule Identifiers) sequence is added to the index sequences in the read name. This is allows the marking of the duplicated reads in a UMI-aware manner (reads/fragments that have exactly the same sequence but different UMI-sequence are not marked as duplicates). The addition of UMI to read name expects that the UMI is added to the index sequences in your data.
 
 Additional information must be provided to the pipeline in the command line:
 * the source fastq directory
@@ -87,16 +86,17 @@ Additional information must be provided to the pipeline in the command line:
 All the other parameters are already available in the `configfile_DNAmapping.yaml` file or hard-coded in the snakemake file.
 
 
-To partially avoid unexpected errors during the execution of the pipeline, a so called 'dry-run' is strongly recommended. Indeed, adding a `-n` flag at the end of the snakemake running command will allow snakemake to check that all links and file/parameters dependencies are satisfied before to run the "real" processes. This command will therefore help the debugging process. <br>
-*Always activate your environment, otherwise the pipeline won't be able to find the packages required for the analyses.*
+To partially avoid unexpected errors during the execution of the pipeline, a so called 'dry-run' is strongly recommended. Indeed, adding a `-n` flag at the end of the snakemake running command will allow snakemake to check that all links and file/parameters dependencies are satisfied before to run the "real" processes. This command will therefore help the debugging process. When you want to run without, remove the `-n` flag. A 'dry-run' only checks whether all resources are available. Failures can still occurr.
+<br>
+
 
 
 **Paired-end** (the `\` must be used every time you go to a new line)
 ```shell
 snakemake \
 --cores 20 \
--s </target/folder>/ChIP_Zwart/workflow/DNAmapping.snakefile \
---configfile </target/folder>/ChIP_Zwart/config/configfile_DNAmapping.yaml \
+-s </target/folder>/ChIP_Zwart_public/workflow/DNAmapping.snakefile \
+--configfile </target/folder>/ChIP_Zwart_public/config/configfile_DNAmapping.yaml \
 --config \
 fastq_directory="/path/to/pairedEnd/fastq_data" \
 output_directory="/path/to/results/directory/" \
@@ -109,8 +109,8 @@ genome="hg38" \
 ```shell
 snakemake \
 --cores 20 \
--s </target/folder>/ChIP_Zwart/workflow/DNAmapping.snakefile \
---configfile </target/folder>/ChIP_Zwart/config/configfile_DNAmapping.yaml \
+-s </target/folder>/ChIP_Zwart_public/workflow/DNAmapping.snakefile \
+--configfile </target/folder>/ChIP_Zwart_public/config/configfile_DNAmapping.yaml \
 --config \
 fastq_directory="/path/to/singleEnd/fastq_data" \
 output_directory="/path/to/results/directory/" \
@@ -119,17 +119,14 @@ genome="hg19" \
 -n
 ```
 
-If no errors occur, the pipeline can be run with the same command but without the final `-n` flag:
-
-Notice that the absence of errors does not mean that the pipeline will run without any issues; the "dry-run" is only checking whether all the resources are available. <br>
-
+If no errors occur, the pipeline can be run with the same command but without the final `-n` flag
 <br/><br/>
 
 
 #### 3.1.1. DNA-mapping workflow <a name="dnaworkflow"></a>
 Here after you can see the full potential workflow of the single-end and paired-end DNA-mapping pipeline:
 
-![DNA mapping workflow](https://raw.githubusercontent.com/sebastian-gregoricchio/ChIP_Zwart/main/resources/DNAmapping_workflow_SE.PE.png)
+![DNA mapping workflow](https://raw.githubusercontent.com/tesa1/ChIP_Zwart_public/main/resources/DNAmapping_workflow_SE.PE.png)
 
 
 <br/><br/>
@@ -197,31 +194,10 @@ Hereafter there are some details of additional parameters available in the `conf
 <hr style="border:2px solid blue">
 
 
-### 3.2. CRAM-TO-BAM <a name="cramtobam"></a>
-It may happen that you start with `.cram` files provided by the GCF. However, the peak-calling pipeline works only with `.bam` files. Therefore, to convert the crams to bams you can use the mini-pipeline provided in this repository. You can also ask to the pipeline to rename your files with the "wz number" indicating `rename_zwart="True"` (otherwise use `rename_zwart="False"`):
-
-```shell
-snakemake \
---cores 10 \
--s </target/folder>/ChIP_Zwart/workflow/cramToBam.snakefile \
---config \
-cram_directory="/path/to/input/cram_folder" \
-bam_out_directory="/path/to/output/bam_folder" \
-genome="hg38" \
-rename_zwart="True"
-```
-(the `\` must be used every time you go to a new line)
-
-_**NOTE**_: remember that the genome used for the conversion must match with the one used to generate the crams. Hence, if the crams do not come from the NKI-GCF please ask for assistance. Available options for the genome are: a) GCF-genomes: `hg38`, `hg19`, `rn6`; b) UCSC-genomes: `hg38_ucsc`, `hg19_ucsc`, `mm10`, `mm9`.
-
-<hr style="border:2px solid blue">
-
-
-
 <br/><br/>
 
 ### 3.3. ChIP-seq peak calling <a name="peakcalling"></a>
-To facilitate the analyses of the ChIP-seq analyses in the Zwart lab, it is strongly recommended to rename your files so that the files contain the wz number. <br> If your already run the `cramToBam` pipeline with the `rename_zwart="True"` flag, this renaming step has been already done. <br> Otherwise, to do that you can find the original section [*Renaming files*](https://github.com/csijcs/snakepipes#renaming-files) from [*Joe's GitHub*](https://github.com/csijcs/snakepipes#renaming-files) also in this repository at [`resources/renaming_wzNumbers_Joe`](https://github.com/sebastian-gregoricchio/ChIP_Zwart/tree/main/resources/renaming_wzNumbers_Joe). More details and the [`rename_files.R`](https://github.com/sebastian-gregoricchio/ChIP_Zwart/tree/main/resources/renaming_wzNumbers_Joe/rename_files.R) script can be found in [`this folder`](https://github.com/sebastian-gregoricchio/ChIP_Zwart/tree/main/resources/renaming_wzNumbers_Joe) as well. Briefly, to run the script, move it to your folder with your bams or fastqs and run `Rscript rename.R`.
+To facilitate the analyses of the ChIP-seq analyses in the Zwart lab, it is strongly recommended to renames your files as simply as possible, see example `peakCalling_sampleConfig_example.txt`  <br> 
 
 The pipeline requires a sample configuration file which provides information about ChIP-Input pairs and the type of peak calling to perform (broad or narrow). <br>
 This configuration file must be in a tab-delimited txt file format (with column names) containing the following information (respect the column order):
@@ -232,7 +208,7 @@ This configuration file must be in a tab-delimited txt file format (with column 
 | sample_B        |   input_A-B      |    False      |
 | sample_C        |   input_C        |    True       |
 
-A dummy-table could be found in [`resources/peakCalling_sampleConfig_example.txt`](https://github.com/sebastian-gregoricchio/ChIP_Zwart/blob/main/resources/peakCalling_sampleConfig_example.txt).
+A dummy-table could be found in [`resources/peakCalling_sampleConfig_example.txt`](https://github.com/tesa1/ChIP_Zwart_public/blob/main/resources/peakCalling_sampleConfig_example.txt).
 
 Additional information must be provided to the pipeline in the command line:
 * the source bam directory (e.g. *rename* folder)
@@ -246,7 +222,6 @@ All the other parameters are already available in the `configfile_peakcalling.ya
 
 
 To partially avoid unexpected errors during the execution of the pipeline, a so called 'dry-run' is strongly recommended. Indeed, adding a `-n` flag at the end of the snakemake running command will allow snakemake to check that all links and file/parameters dependencies are satisfied before to run the "real" processes. This command will therefore help the debugging process. <br>
-*Always activate your environment, otherwise the pipeline won't be able to find the packages required for the analyses.*
 
 **_NOTE_**: if the bam files derive from the [DNA-mapping pipeline](#dnamapping) you can save time by adding the flag `skip_bam_filtering="True"` (MAPQ filter and MarkDuplicates are skipped). Notice that you may need to add/modify the flag for the bam suffix to `bam_suffix="_mapq20_mdup_sorted.bam"` in order to match the extension of the output files of the [DNA-mapping pipeline](#dnamapping).
 
@@ -255,8 +230,8 @@ To partially avoid unexpected errors during the execution of the pipeline, a so 
 ```shell
 snakemake \
 --cores 10 \
--s </target/folder>/ChIP_Zwart/workflow/peakcalling.snakefile \
---configfile </target/folder>/ChIP_Zwart/config/configfile_peakCalling.yaml \
+-s </target/folder>/ChIP_Zwart_public/workflow/peakcalling.snakefile \
+--configfile </target/folder>/ChIP_Zwart_public/config/configfile_peakCalling.yaml \
 --config \
 runs_directory="/path/to/rename" \
 output_directory="/path/to/results/directory/" \
@@ -271,8 +246,8 @@ genome="hg19" \
 ```shell
 snakemake \
 --cores 10 \
--s </target/folder>/ChIP_Zwart/workflow/peakcalling.snakefile \
---configfile </target/folder>/ChIP_Zwart/config/configfile_peakCalling.yaml \
+-s </target/folder>/ChIP_Zwart_public/workflow/peakcalling.snakefile \
+--configfile </target/folder>/ChIP_Zwart_public/config/configfile_peakCalling.yaml \
 --config \
 runs_directory="/path/to/rename" \
 output_directory="/path/to/results/directory/" \
@@ -286,7 +261,7 @@ genome="hg38" \
 
 If no errors occur, the pipeline can be run with the same command but without the final `-n` flag:
 
-Notice that the absence of errors does not mean that the pipeline will run without any issues; the "dry-run" is only checking whether all the resources are available. <br>
+Note that the absence of errors does not mean that the pipeline will run without any issues; the "dry-run" is only checking whether all the resources are available. <br>
 
 <br/><br/>
 
@@ -295,12 +270,12 @@ Notice that the absence of errors does not mean that the pipeline will run witho
 Here after you can see the full potential workflow of the paired-end and single-end ChIP-seq pipeline:
 
 **a) SINGLE-END**
-![PE workflow](https://raw.githubusercontent.com/sebastian-gregoricchio/ChIP_Zwart/main/resources/peakcalling_workflow_SE.png)
+![PE workflow](https://raw.githubusercontent.com/tesa1/ChIP_Zwart_public/main/resources/peakcalling_workflow_SE.png)
 
 <br/><br/>
 
 **b) PAIRED-END**
-![PE workflow](https://raw.githubusercontent.com/sebastian-gregoricchio/ChIP_Zwart/main/resources/peakcalling_workflow_PE.png)
+![PE workflow](https://raw.githubusercontent.com/tesa1/ChIP_Zwart_public/main/resources/peakcalling_workflow_PE.png)
 
 <br/><br/>
 
@@ -310,7 +285,7 @@ The results structure is the following:
 * *01_BAM_filtered* -> bams filtered for mapping quality (MAPQ) and with the duplicates marked/removed
 * *02_fastQC_on_BAM_filtered* -> individual fastQC for each filtered bam
 * *03_bigWig_bamCoverage* -> bigWig of the bam coverage normalized ([RPGC](https://deeptools.readthedocs.io/en/develop/content/help_glossary.html?highlight=RPGC#abbreviations) = Reads Per Genomic Content) or not (raw_coverage) depending on the sequencing depth
-* *04_Called_peaks* -> peaks called with macs2 (de-blacklisted in hg38 but not hg19 - for backwards compatibility of older Zwart lab data -). If single-end, it can be found also a folder with the output of [`phantompeakqualtools`](https://www.encodeproject.org/software/phantompeakqualtools/) as the calculated fragment length is used for running macs2 with single-end data. If the bed file does not contain already the 'chr' for the "canonical" chromosomes, it will be added in a separated file ending by `_chr.narrow/broadPeak`
+* *04_Called_peaks* -> peaks called with macs2 (de-blacklisted in hg38 but not hg19 - for backwards compatibility of older hg19 Zwart lab data -). If single-end, it can be found also a folder with the output of [`phantompeakqualtools`](https://www.encodeproject.org/software/phantompeakqualtools/) as the calculated fragment length is used for running macs2 with single-end data. If the bed file does not contain already the 'chr' for the "canonical" chromosomes, it will be added in a separated file ending by `_chr.narrow/broadPeak`
 * *05_Quality_controls_and_statistics* -> this folder contains sample correlations heatmaps and PCAs, a multiQC report containing multiple info (number of reads, duplicates, peak counts and fragmenth lenght, phantom results), statistics on the called peaks (FRiP, number, etc.)
 
 
@@ -397,7 +372,7 @@ Hereafter there are some details of additional parameters available in the `conf
 
 ## 4. Troubleshooting  <a name="troubles"></a>
 It may happen that the piepline returns errors saying that certain python or R packages are not found even though the `chip_zwart` conda environment is loaded. <br>
-To solve this problem it is sufficient to unload all the conda environments (included the `base` one) by typing `conda deactivate` until all the environment are detached: `your.name@harris:~$`
+You may have conda envs installed already on your system which do not work well with activated `chip_zwart`. One way to try to solve this is to continuously deactivate all conda envs by typing `conda deactivate` until all the environment are detached: `your.name@youserver:~$`
 
 Now load again the ChIP pipeline environment by typing `conda activate chip_zwart`. <br> Check then that the pipeline is using the correct python version by typing `which python`. <br> The command should return something like `/home/your.name/.conda/envs/chip_zwart/bin/python` instead of `/usr/bin/python`.
 
@@ -409,18 +384,19 @@ Now load again the ChIP pipeline environment by typing `conda activate chip_zwar
 
 ## 5. Pipeline info <a name="info"></a>
 ### 5.1. Package history and releases <a name="history"></a>
-A list of all releases and respective description of changes applied could be found [here](https://github.com/sebastian-gregoricchio/ChIP_Zwart/blob/main/NEWS.md).
+A list of all releases and respective description of changes applied could be found [here](https://github.com/tesa1/ChIP_Zwart_public/blob/main/NEWS.md).
 
 ### 5.2. Contact <a name="contact"></a>
-For any suggestion, bug fixing, commentary please report it in the [issues](https://github.com/sebastian-gregoricchio/ChIP_Zwart/issues)/[request](https://github.com/sebastian-gregoricchio/ChIP_Zwart/pulls) tab of this repository.
+For any suggestion, bug fixing, commentary please report it in the [issues](https://github.com/tesa1/ChIP_Zwart_public/issues)
 
 ### 5.3. License <a name="license"></a>
-This repository is under a [GNU General Public License (version 3)](https://github.com/sebastian-gregoricchio/ChIP_Zwart/blob/main/LICENSE.md/LICENSE.md).
+This repository is under a [GNU General Public License (version 3)](https://github.com/tesa1/ChIP_Zwart_public/blob/main/LICENSE.md/LICENSE.md).
 
 <br/>
 
 ### 5.4. Contributors <a name="contributors"></a>
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
 
 
 
