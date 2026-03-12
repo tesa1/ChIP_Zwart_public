@@ -57,8 +57,8 @@ For the installation, follow the following steps:
 * download the GitHub repository with `git clone https://github.com/tesa1/ChIP_Zwart_public`, or click on *Code > Download ZIP* on the [GitHub page](https://github.com/tesa1/ChIP_Zwart_public)
 * install the conda environment from the yaml environment file contained in the repository:<br>
 `conda env create -f </target/folder>/ChIP_Zwart_public/workflow/envs/chip_zwart_condaEnv_stable.yaml`
-* activate the environment: `conda activate chip_zwart` (if the env is not activated the pipeline won't work!): <br>
-`(chip_zwart) your.name@yourserver:~$`
+* activate the environment: `conda activate chip_zwart_public` (if the env is not activated the pipeline won't work!): <br>
+`(chip_zwart_public) your.name@yourserver:~$`
 
 <br/><br/>
 
@@ -366,10 +366,10 @@ Hereafter there are some details of additional parameters available in the `conf
 
 
 ## 4. Troubleshooting  <a name="troubles"></a>
-It may happen that the piepline returns errors saying that certain python or R packages are not found even though the `chip_zwart` conda environment is loaded. <br>
-You may have conda envs installed already on your system which do not work well with activated `chip_zwart`. One way to try to solve this is to continuously deactivate all conda envs by typing `conda deactivate` until all the environment are detached: `your.name@youserver:~$`
+It may happen that the piepline returns errors saying that certain python or R packages are not found even though the `chip_zwart_public` conda environment is loaded. <br>
+You may have conda envs installed already on your system which do not work well with activated `chip_zwart_public`. One way to try to solve this is to continuously deactivate all conda envs by typing `conda deactivate` until all the environment are detached: `your.name@youserver:~$`
 
-Now load again the ChIP pipeline environment by typing `conda activate chip_zwart`. <br> Check then that the pipeline is using the correct python version by typing `which python`. <br> The command should return something like `/home/your.name/.conda/envs/chip_zwart/bin/python` instead of `/usr/bin/python`.
+Now load again the ChIP pipeline environment by typing `conda activate chip_zwart_public`. <br> Check then that the pipeline is using the correct python version by typing `which python`. <br> The command should return something like `/home/your.name/.conda/envs/chip_zwart_public/bin/python` instead of `/usr/bin/python`.
 
 
 <br/><br/>
@@ -390,7 +390,10 @@ This repository is under a [GNU General Public License (version 3)](https://gith
 <br/>
 
 ### 5.4. Contributors <a name="contributors"></a>
+![contributors](https://contrib.rocks/image?repo=tesa1/chip_zwart_public)
 ![contributors](https://contrib.rocks/image?repo=sebastian-gregoricchio/chip_zwart)
+
+
 
 
 
