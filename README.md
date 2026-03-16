@@ -54,8 +54,8 @@ Ensure you have a proper conda path (eg. /opt/miniconda3/bin/conda) by running: 
 ### 2.2 User Input Files <a name="user_input"></a>
 The pipeline expects 2 sets of pre-installed files
 * path to BWA indexed genome reference files should be changed to your info in `DNA_mapping.snakefile`. Fasta genome reference files can be indexed with `bwa index reference.fa`. For example, hg38 can be downloaded [here](https://hgdownload.gi.ucsc.edu/goldenPath/hg38/bigZips/)
-* path to BWA indexed files and blacklist *.bed files should be changed in `peakCalling.snakefile`. Blacklist files can be downloaded from [ENCODE](https://www.encodeproject.org/annotations/ENCSR636HFF/)
-* effective genome size and any chromosomes to ignore bigwig for normalization (patch chromosomes) should be changed to reflect your own genomes in `peakCalling.snakefile`. Effective genome size can be calculated with Kents tools [faCount](https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/) adding up the A,C,G,T bases to get a total effective genome using `faCount -summary genome.fa`. This information is used in the RPGC normalization of bigwigs and hg38 blacklist is used to automatically filter hg38 peakcalling output files with bedtools. For hg19, the blacklist is used for normalization only, peaks are not automatically filtered (to remain backwards compatible with older Zwart lab datasets). 
+* path to BWA indexed files and blacklist *.bed files should be changed in `peakCalling.snakefile` to your information. Blacklist files can be downloaded from [ENCODE](https://www.encodeproject.org/annotations/ENCSR636HFF/)
+* effective genome size and any chromosomes to ignore bigwig for normalization (patch chromosomes, sex chromosomes and mitochondrial chromosome) should be changed to reflect your own genomes in `peakCalling.snakefile`. Effective genome size can be calculated with Kents tools [faCount](https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/) adding up the A,C,G,T bases to get a total effective genome using `faCount -summary genome.fa`. This information is used in the RPGC normalization of bigwigs and hg38 blacklist is used to automatically filter hg38 peakcalling output files with bedtools. For hg19, the blacklist is used for normalization only, peaks are not automatically filtered (to remain backwards compatible with older Zwart lab datasets). 
 * example lines have been left in `DNA_mapping.snakefile` and `peakCalling.snakefile`. These should be changed to suit your purposes.
 
 ### 2.3 Environment installation <a name="envinstall"></a>
@@ -85,7 +85,7 @@ Additional information must be provided to the pipeline in the command line:
 * the source fastq directory
 * the output directory where you want your results to be stored (if not already available, the pipeline will make it for you)
 * whether your data are paired- or single-end
-* You must provide your own path to genomes eg: `hg38`, `hg19`, `rn6`. Change path and `.fa` file information in `DNA_mapping.snakefile` to your locations. The pipeline uses BWA, so you must index your genome file(s) in this location with `bwa index reference.fa`.
+* You must provide your own path to genomes eg: `hg38`, `hg19`. Change path and `.fa` file information in `DNA_mapping.snakefile` to your locations. The pipeline uses BWA, so you must index your genome file(s) in this location with `bwa index reference.fa`.
 
 All the other parameters are already available in the `configfile_DNAmapping.yaml` file or hard-coded in the snakemake file. Inspect the hard-coded parameters to make sure they work for your data. **_NOTE_**:The default of DNA_mapping is to mark duplicates but not remove them. If you wish to remove them, add the `remove_duplicates="True"` in the DNA-mapping command (if true the tag in the bams will be *_dedup* instead of *_mdup*). 
 
