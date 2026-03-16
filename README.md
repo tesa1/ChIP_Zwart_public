@@ -49,7 +49,7 @@ To install the pipeline it is required to download this repository and use conda
 ### 2.1 Conda info <a name="condainfo"></a>
 Conda must be installed on your system for the pipeline to work. 
 
-Ensure you have a proper conda path (eg. /opt/miniconda3/bin/conda) by running: `which conda`
+Ensure you have a proper conda path (eg. /opt/miniconda3/bin/conda) by running: `which conda`.
 
 ### 2.2 User Input Files <a name="user_input"></a>
 The pipeline expects 2 sets of pre-installed files
