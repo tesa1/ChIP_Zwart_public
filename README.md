@@ -66,7 +66,7 @@ For the installation, follow the following steps:
 * download the GitHub repository with `git clone https://github.com/tesa1/ChIP_Zwart_public`, or click on *Code > Download ZIP* on the [GitHub page](https://github.com/tesa1/ChIP_Zwart_public)
 * install the conda environment from the yaml environment file contained in the repository:<br>
 `conda env create -f </target/folder>/ChIP_Zwart_public/workflow/envs/chip_zwart_condaEnv_stable.yaml`
-* activate the environment: `conda activate chip_zwart_public` (if the env is not activated the pipeline won't work!): <br>
+* activate the environment: `conda activate chip_zwart_public` (if the env is not activated the pipeline won't work!). Usually it looks something like this: <br>
 `(chip_zwart_public) your.name@yourserver:~$`
 
 <br/><br/>
