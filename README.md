@@ -380,7 +380,7 @@ You may have conda envs installed already on your system which do not work well 
 
 Now load again the ChIP pipeline environment by typing `conda activate chip_zwart_public`. <br> Check then that the pipeline is using the correct python version by typing `which python`. <br> The command should return something like `/home/your.name/.conda/envs/chip_zwart_public/bin/python` instead of `/usr/bin/python`.
 
-Another frequent problem is dos/mac line endings and hidden characters on the `peakCalling_sampleConfig_example.txt` file. You can fix this with dos2unix by running `dos2unix peakCalling_sampleConfig_example.txt`
+Another frequent problem is dos/mac line endings and hidden characters on the `peakCalling_sampleConfig_example.txt` file. If you have dos2unix installed on your system you can try running `dos2unix peakCalling_sampleConfig_example.txt`
 
 
 <br/><br/>
