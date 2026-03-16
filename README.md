@@ -90,7 +90,7 @@ Additional information must be provided to the pipeline in the command line:
 All the other parameters are already available in the `configfile_DNAmapping.yaml` file or hard-coded in the snakemake file. Inspect the hard-coded parameters to make sure they work for your data. **_NOTE_**:The default of DNA_mapping is to mark duplicates but not remove them. If you wish to remove them, add the `remove_duplicates="True"` in the DNA-mapping command (if true the tag in the bams will be *_dedup* instead of *_mdup*). 
 
 
-To partially avoid unexpected errors during the execution of the pipeline, a so called 'dry-run' is strongly recommended. Indeed, adding a `-n` flag at the end of the snakemake running command will allow snakemake to check that all links and file/parameters dependencies are satisfied before to run the "real" processes. This command will therefore help the debugging process. When you want to run without, remove the `-n` flag. A 'dry-run' only checks whether all resources are available. Failures can still occurr.
+To partially avoid unexpected errors during the execution of the pipeline, a so called 'dry-run' is strongly recommended. Adding a `-n` flag at the end of the snakemake running command will allow snakemake to check that all links and file/parameters dependencies are satisfied before to run the "real" processes. A 'dry-run' only checks whether all resources are available, failures can still occur. When you want to run without, remove the `-n` flag. 
 <br>
 
 
@@ -225,7 +225,7 @@ Additional information must be provided to the pipeline in the command line:
 All the other parameters are already available in the `configfile_peakcalling.yaml` file or hard-coded in the snakemake file.
 
 
-To partially avoid unexpected errors during the execution of the pipeline, a so called 'dry-run' is strongly recommended. Indeed, adding a `-n` flag at the end of the snakemake running command will allow snakemake to check that all links and file/parameters dependencies are satisfied before to run the "real" processes. This command will therefore help the debugging process. <br>
+To partially avoid unexpected errors during the execution of the pipeline, a so called 'dry-run' is strongly recommended. Adding a `-n` flag at the end of the snakemake running command will allow snakemake to check that all links and file/parameters dependencies are satisfied before to run the "real" processes. A 'dry-run' only checks whether all resources are available, failures can still occur. When you want to run without, remove the `-n` flag.  <br>
 
 **_NOTE_**: if the bam files derive from the [DNA-mapping pipeline](#dnamapping) you can save time by adding the flag `skip_bam_filtering="True"` (MAPQ filter and MarkDuplicates are skipped). Notice that you may need to add/modify the flag for the bam suffix to `bam_suffix="_mapq20_mdup_sorted.bam"` in order to match the extension of the output files of the [DNA-mapping pipeline](#dnamapping).
 
@@ -265,7 +265,6 @@ genome="hg38" \
 
 If no errors occur, the pipeline can be run with the same command but without the final `-n` flag:
 
-Note that the absence of errors does not mean that the pipeline will run without any issues; the "dry-run" is only checking whether all the resources are available. <br>
 
 <br/><br/>
 
@@ -352,7 +351,7 @@ Here an example directory tree:
 <br/><br/>
 
 #### 3.3.3. Peak calling config file <a name="peakcallingconfig"></a>
-Hereafter there are some details of additional parameters available in the `configfile_peakCalling.yaml`. However, default parameters are already pre-set and should not be changed without expert advices. <br> If you wish to make changes, just make a copy of the config file and provide the path to the new file in the snakemake running command line.
+Hereafter there are some details of additional parameters available in the `configfile_peakCalling.yaml`. However, default parameters are already pre-set and should not be changed without expert advice. <br> If you wish to make changes, just make a copy of the config file and provide the path to the new file in the snakemake running command line.
 
 | **Parameter**   |  **Description**   |
 |------------:|:----------------|
@@ -378,7 +377,7 @@ Hereafter there are some details of additional parameters available in the `conf
 It may happen that the piepline returns errors saying that certain python or R packages are not found even though the `chip_zwart_public` conda environment is loaded. <br>
 You may have conda envs installed already on your system which do not work well with activated `chip_zwart_public`. One way to try to solve this is to continuously deactivate all conda envs by typing `conda deactivate` until all the environment are detached.
 
-Now load again the ChIP pipeline environment by typing `conda activate chip_zwart_public`. <br> Check then that the pipeline is using the correct python version by typing `which python`. <br> The command should return something like `/home/your.name/.conda/envs/chip_zwart_public/bin/python` instead of `/usr/bin/python`.
+Now load again the ChIP Zwart public pipeline environment by typing `conda activate chip_zwart_public`. <br> Check then that the pipeline is using the correct python version by typing `which python`. <br> The command should return something like `/home/your.name/.conda/envs/chip_zwart_public/bin/python` instead of `/usr/bin/python`.
 
 Another frequent problem is dos/mac line endings and hidden characters on the `peakCalling_sampleConfig_example.txt` file. If you have dos2unix installed on your system you can try running `dos2unix peakCalling_sampleConfig_example.txt`
 
