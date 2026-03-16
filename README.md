@@ -53,8 +53,8 @@ Ensure you have a proper conda path (eg. /opt/miniconda3/bin/conda) by running: 
 
 ### 2.2 User Input Files <a name="user_input"></a>
 The pipeline expects 2 sets of pre-installed files
-* path to BWA indexed genome reference files should be changed to your info in `DNA_mapping.snakefile`. Fasta genome reference files can be indexed with `bwa index reference.fa` using BWA once `chip_zwart_public` has been activated. For example, hg38 can be downloaded [here](https://hgdownload.gi.ucsc.edu/goldenPath/hg38/bigZips/)
-* path to BWA indexed files and blacklist *.bed files should be changed in `peakCalling.snakefile` to your information. Blacklist files can be downloaded from [ENCODE](https://www.encodeproject.org/annotations/ENCSR636HFF/). Ensure the chromosome naming is the same as your reference genome (eg. if there is a 'chr' in your reference genome, there should be a 'chr' in your blacklist bed files.)
+* path to BWA indexed genome reference files should be changed to your info in `DNA_mapping.snakefile`. Fasta genome reference files can be indexed with `bwa index reference.fa` using BWA once `chip_zwart_public` has been activated. For example, hg38 can be downloaded [here](https://hgdownload.gi.ucsc.edu/goldenPath/hg38/bigZips/).
+* path to BWA indexed files and blacklist *.bed files should be changed in `peakCalling.snakefile` to your information. Blacklist files can be downloaded from [ENCODE](https://www.encodeproject.org/annotations/ENCSR636HFF/). Ensure the chromosome naming is the same as your reference genome (eg. if there is a 'chr' in your reference genome, there should be a 'chr' in your blacklist bed files).
 * effective genome size and any chromosomes to ignore bigwig for normalization (patch chromosomes, sex chromosomes and mitochondrial chromosome) should be changed to reflect your own genomes in `peakCalling.snakefile`. Effective genome size can be calculated with Kents tools [faCount](https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/) adding up the A,C,G,T bases to get a total effective genome using `faCount -summary genome.fa`. This information is used in the RPGC normalization of bigwigs and hg38 blacklist is used to automatically filter hg38 peakcalling output files with bedtools. For hg19, the blacklist is used for normalization only, peaks are not automatically filtered (to remain backwards compatible with older Zwart lab datasets). 
 * example lines have been left in `DNA_mapping.snakefile` and `peakCalling.snakefile`. These should be changed to suit your purposes.
 
@@ -201,7 +201,7 @@ Hereafter there are some details of additional parameters available in the `conf
 <br/><br/>
 
 ### 3.3. ChIP-seq peak calling <a name="peakcalling"></a>
-This peak calling pipeline expects that every sample has an input. This pipeline will not work if you do not have input files for your samples. To facilitate the analyses of the ChIP-seq analyses, it is strongly recommended to name your files as simply as possible, see example `peakCalling_sampleConfig_example.txt`  <br> 
+This peak calling pipeline expects that every sample has an input. This pipeline will not work if you do not have input files for your samples. To facilitate the analyses of the ChIP-seq analyses, it is strongly recommended to name your files as simply as possible, see example `peakCalling_sampleConfig_example.txt`.  <br> 
 
 The pipeline requires a sample configuration file which provides information about ChIP-Input pairs and the type of peak calling to perform (broad or narrow). <br>
 This configuration file must be in a tab-delimited txt file format (with column names) containing the following information (respect the column order):
