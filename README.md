@@ -389,7 +389,7 @@ Another frequent problem is dos/mac line endings and hidden characters on the `p
 
 ## 5. Pipeline info <a name="info"></a>
 ### 5.1. Package history and releases <a name="history"></a>
-A list of all releases and respective description of changes applied could be found [here](https://github.com/tesa1/ChIP_Zwart_public/blob/main/NEWS.md).
+A list of all releases and respective description of changes applied could be found [here](https://github.com/tesa1/ChIP_Zwart_public/releases/tag/public_release).
 
 ### 5.2. Contact <a name="contact"></a>
 For any suggestion, bug fixing, commentary please report it in the [issues](https://github.com/tesa1/ChIP_Zwart_public/issues)
