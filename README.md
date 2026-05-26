@@ -3,7 +3,7 @@
 
 
 # ChIP-seq Analysis used in the Wilbert Zwart Lab
-# Alignment, Peakcalling, Bigwigs and QC Plots and Metrics
+# Alignment, Peakcalling, (Normalized) Bigwigs and QC Plots and Metrics
 
 1. [Introduction](#intro)
 2. [Installation and dependencies](#dependencies)
